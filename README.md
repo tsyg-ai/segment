@@ -1,4 +1,4 @@
-# Takenbeheer
+# Segment
 
 Single-user desktop task manager. Reusable project templates, task tracking and native Windows reminders.
 

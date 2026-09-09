@@ -66,7 +66,7 @@ jobs:
           tagName: ${{ github.ref_name }}
           releaseName: "Takenbeheer ${{ github.ref_name }}"
           releaseBody: "Zie de commitgeschiedenis voor de wijzigingen in deze versie."
-          releaseDraft: false
+          releaseDraft: true
           prerelease: false
           # Genereert en publiceert `latest.json` naast de installer zodat
           # `tauri-plugin-updater` de update-feed vindt.

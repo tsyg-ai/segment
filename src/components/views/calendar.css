@@ -1,0 +1,122 @@
+/* react-big-calendar gethemed naar het ontwerp (spec §8).
+   Bespoke maandraster-look; events dragen de vier chip-paren op 8 px radius. */
+
+.rbc-calendar {
+  font-family: var(--font-sans);
+  color: var(--text-body);
+}
+
+/* --- maandraster ------------------------------------------------------- */
+.rbc-month-view,
+.rbc-time-view {
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface-card);
+}
+
+.rbc-header {
+  padding: 8px 6px;
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.5px;
+  text-transform: lowercase;
+  color: var(--text-muted);
+  border-bottom: var(--border-width) solid var(--border-default);
+}
+.rbc-header + .rbc-header,
+.rbc-day-bg + .rbc-day-bg,
+.rbc-month-row + .rbc-month-row {
+  border-color: var(--border-subtle);
+}
+.rbc-month-row {
+  overflow: visible;
+}
+
+.rbc-date-cell {
+  padding: 4px 0 0 8px;
+  text-align: left;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--text-secondary);
+}
+.rbc-off-range-bg {
+  background: var(--surface-sunken);
+}
+.rbc-off-range .rbc-button-link {
+  color: var(--text-muted);
+}
+.rbc-today {
+  background: var(--accent-tint);
+}
+.rbc-now .rbc-button-link {
+  color: var(--accent-text);
+}
+
+/* --- events ---------------------------------------------------------- */
+.rbc-event,
+.rbc-day-slot .rbc-event {
+  border-radius: 8px;
+  border: var(--border-width) solid transparent;
+  padding: 1px 6px;
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  box-shadow: none;
+}
+.rbc-event:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.rbc-event.tone-late {
+  background: var(--late-bg);
+  border-color: var(--late-border);
+  color: var(--late-fg);
+}
+.rbc-event.tone-today {
+  background: var(--today-bg);
+  border-color: var(--today-border);
+  color: var(--today-fg);
+}
+.rbc-event.tone-neutral {
+  background: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  color: var(--neutral-fg);
+}
+.rbc-event.tone-done {
+  background: var(--done-bg);
+  border-color: var(--done-border);
+  color: var(--done-fg);
+}
+.rbc-event-label {
+  display: none;
+}
+.rbc-show-more {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  color: var(--text-link);
+  background: transparent;
+  padding: 0 6px;
+}
+
+/* --- weekraster ----------------------------------------------------- */
+.rbc-time-header-content,
+.rbc-time-content,
+.rbc-timeslot-group,
+.rbc-time-gutter .rbc-timeslot-group {
+  border-color: var(--border-subtle);
+}
+.rbc-time-content {
+  border-top: var(--border-width) solid var(--border-default);
+}
+.rbc-label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  color: var(--text-muted);
+  padding: 0 6px;
+}
+.rbc-current-time-indicator {
+  background: var(--accent);
+}
+.rbc-allday-cell {
+  max-height: none;
+}

@@ -1,0 +1,30 @@
+:root {
+  /* ONE radius for cards, buttons, inputs, chips and pills */
+  --radius: 11px;
+  --radius-sm: 8px;      /* checkboxes, icon buttons, keycaps, count badges, segmented tabs */
+  --radius-round: 999px; /* only true circles: project dots, progress bars, the tray toggle */
+  --radius-window: 18px; /* the app window frame only — not a surface inside the app */
+
+  --border-width: 1px;
+  --border-width-control: 2px; /* unchecked checkbox, dashed add-buttons */
+
+  --shadow-card: 0 1px 2px rgba(43, 52, 49, 0.05);
+  --shadow-raised: 0 1px 2px rgba(43, 52, 49, 0.07);
+  --shadow-window: 0 8px 26px rgba(43, 52, 49, 0.13);  /* the app window frame */
+  --shadow-lifted: 0 8px 26px rgba(43, 52, 49, 0.18);  /* a card while it is dragged */
+  --shadow-popover: 0 14px 34px rgba(43, 52, 49, 0.2); /* herinneringspopover, dagdetail */
+  --shadow-dialog: 0 22px 50px rgba(43, 52, 49, 0.28); /* modal sheets */
+  --scrim: rgba(43, 52, 49, 0.34);                     /* behind every dialog */
+
+  --progress-h: 6px;
+  --dot-size: 9px;
+  --dot-size-lg: 10px;
+  --checkbox-size: 22px;
+
+  /* Lucide icons — stroke-width is derived (38 / size) so every size reads as ~1.6px */
+  --icon-size-sm: 13px;  /* chips, pills, keuzelijst chevron, xs buttons */
+  --icon-size: 16px;     /* default: inline with body text, sm buttons, icon buttons */
+  --icon-size-lg: 18px;  /* lg primary button */
+
+  --transition: 120ms ease;
+}

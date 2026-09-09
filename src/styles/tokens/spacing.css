@@ -1,0 +1,33 @@
+:root {
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 14px;
+  --space-8: 16px;
+  --space-9: 18px;
+  --space-10: 20px;
+  --space-11: 22px;
+  --space-12: 26px;
+
+  /* control sizing */
+  --control-h: 42px;      /* search field, primary header button */
+  --control-h-md: 36px;
+  --control-h-sm: 32px;   /* toolbar + filter buttons */
+  --control-h-xs: 30px;   /* in-row status pill */
+  --control-pad-x: 18px;
+  --control-pad-x-sm: 14px;
+
+  /* list density (see dichtheid tweak) */
+  --row-pad-compact: 10px;
+  --row-pad-comfortable: 15px;
+  --row-pad-x: 18px;
+
+  /* shell */
+  --sidebar-w: 236px;
+  --project-col-w: 212px;
+  --detail-panel-w: 352px;
+  --gutter: var(--space-11);
+}

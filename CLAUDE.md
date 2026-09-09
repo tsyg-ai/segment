@@ -1,0 +1,5 @@
+- Commits should be in English
+- Don't try to check the app itself. It won't work. Let the user do the testing in-app.
+- Designs will contains links to subpages holding the actual designs. For example:
+  - <dc-import name="_dashboard" screen="start" hint-size="1410px,830px"></dc-import>
+  - Refers to '_dashboard.dc.html'

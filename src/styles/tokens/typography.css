@@ -1,0 +1,33 @@
+:root {
+  --font-sans: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* type scale — small, dense, Dutch UI copy */
+  --text-2xs: 11px;   /* uppercase section labels */
+  --text-xs: 12px;    /* deadline + status in list rows */
+  --text-sm: 13px;    /* meta, counts, secondary */
+  --text-base: 13.5px;/* detail values, filter chips */
+  --text-md: 14px;    /* task titles, sidebar project names */
+  --text-lg: 15px;    /* nav items, buttons */
+  --text-xl: 16px;    /* project group heading */
+  --text-2xl: 19px;
+  --text-3xl: 24px;   /* page title */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  --leading-tight: 1.25;
+  --leading-snug: 1.35;
+  --leading-normal: 1.5;
+
+  --tracking-title: -0.5px;
+  --tracking-label: 0.7px;
+
+  /* composed label style (uppercase field labels in the detail panel) */
+  --label-size: var(--text-2xs);
+  --label-weight: var(--weight-bold);
+  --label-tracking: var(--tracking-label);
+  --label-color: var(--text-label);
+}

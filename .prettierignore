@@ -1,0 +1,16 @@
+dist
+node_modules
+target
+src-tauri/target
+src-tauri/gen
+src-tauri/icons
+core/target
+designs
+plans
+specs
+pnpm-lock.yaml
+Cargo.lock
+src/fonts
+# ported verbatim from designs/ — keep 1:1, don't reformat
+src/styles/tokens
+src/components/**/*.prompt.md

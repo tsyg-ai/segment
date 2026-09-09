@@ -1,0 +1,25 @@
+/* Design-system tokens — ported 1:1 from designs/tokens/*. Token names are
+   unchanged. This is the single stylesheet the app links. */
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/shape.css";
+@import "./tokens/base.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* The app fills the OS window; only lists scroll (readme: "Layout"). */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-width: 1366px; /* window minimumbreedte (spec) — chrome degrades, never wraps */
+}

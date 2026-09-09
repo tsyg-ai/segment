@@ -1,0 +1,74 @@
+name: Release
+
+# Tag a version (`vX.Y.Z`) on the public repo → GitHub Actions bouwt de
+# Windows NSIS-installer (per-user, geen admin), ondertekent de
+# update-artefacten en publiceert `latest.json` + binaries naar een GitHub
+# Release (plan 7 §2.5).
+#
+# Vereiste repo-secrets:
+#   TAURI_SIGNING_PRIVATE_KEY           — de updater-private-key (minisign),
+#                                         gegenereerd met `pnpm tauri signer generate`.
+#   TAURI_SIGNING_PRIVATE_KEY_PASSWORD  — het wachtwoord van die key (leeg toegestaan).
+#
+# De bijhorende PUBLIC key staat in `src-tauri/tauri.conf.json` onder
+# `plugins.updater.pubkey`; de `endpoints` daar moeten naar deze repo wijzen
+# (`https://github.com/<OWNER>/<REPO>/releases/latest/download/latest.json`).
+#
+# Windows code signing is UITGESTELD tot na de eerste gebruikerstesten — de
+# installer is dus niet Authenticode-ondertekend en geeft eenmalig een
+# SmartScreen-waarschuwing (zie README).
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+env:
+  PNPM_VERSION: "9.15.0"
+  NODE_VERSION: "20"
+
+jobs:
+  release:
+    name: Build + publish Windows installer
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      # Pinned to match rust-toolchain.toml.
+      - uses: dtolnay/rust-toolchain@1.98.0
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: ". -> target"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build, sign & publish the release
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        with:
+          # De tag zelf is de versie (bv. v0.2.0 → release "Takenbeheer v0.2.0").
+          tagName: ${{ github.ref_name }}
+          releaseName: "Takenbeheer ${{ github.ref_name }}"
+          releaseBody: "Zie de commitgeschiedenis voor de wijzigingen in deze versie."
+          releaseDraft: false
+          prerelease: false
+          # Genereert en publiceert `latest.json` naast de installer zodat
+          # `tauri-plugin-updater` de update-feed vindt.
+          includeUpdaterJson: true
+          args: --bundles nsis

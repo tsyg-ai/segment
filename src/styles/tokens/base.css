@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  background: var(--bg-desk);
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  /* Light-only app: pin native controls (date/time pickers) to the light
+     rendering so their text keeps the author `color` instead of the UA's
+     dark-mode fill on a tinted background. */
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+a { color: var(--text-link); }
+a:hover { color: var(--text-link-hover); }
+input, button { font-family: inherit; }
+
+/* Dropdown / menu options get a visible hover fill. Item backgrounds are set
+   inline all over the app, so these rules need `!important` to land. */
+[role="menuitem"]:not(:disabled):hover,
+[role="menuitemradio"]:not(:disabled):hover,
+[role="menuitemcheckbox"]:not(:disabled):hover,
+[role="option"]:not(:disabled):hover {
+  background: var(--paper-400) !important;
+}

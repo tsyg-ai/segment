@@ -1,0 +1,6 @@
+# Pinned so local and CI use the identical rustfmt/clippy — the repo
+# had no pin, which made `cargo fmt --all --check` diverge per machine.
+# Bump this together with a `cargo fmt --all` pass when upgrading.
+[toolchain]
+channel = "1.98.0"
+components = ["rustfmt", "clippy"]

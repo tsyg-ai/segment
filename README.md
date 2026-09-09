@@ -1,22 +1,10 @@
 # Takenbeheer
 
-Single-user desktop task manager for CLB counsellors (Centrum voor
-Leerlingenbegeleiding, Flanders). Reusable project templates, task tracking and
-native Windows reminders. Holds **no pupil data** by design.
+Single-user desktop task manager. Reusable project templates, task tracking and native Windows reminders.
 
 - Interface: **Dutch only**. Code and database identifiers: **English**.
 - Shell: **Tauri v2** (NSIS, per-user install). Frontend: **React + TypeScript + Vite**.
 - Data: **SQLite** via `rusqlite`, all access through the Rust core (no `tauri-plugin-sql`).
-
-## Layout
-
-| Path                         | What                                                                                               |
-| ---------------------------- | -------------------------------------------------------------------------------------------------- |
-| `src/`                       | React frontend — design-system components ported from `designs/`, app shell, i18n, IPC/query infra |
-| `core/` (`takenbeheer-core`) | Business logic + SQLite data layer, testable without Tauri                                         |
-| `src-tauri/` (`takenbeheer`) | Tauri glue: plugin registration, DB bootstrap, `#[tauri::command]` surface                         |
-| `designs/`                   | Frozen visual reference — **never imported at runtime**, only ported from                          |
-| `plans/`                     | The seven development plans that carve up `specs/CLB-Takenbeheer-Spec-v3.md`                       |
 
 ## Prerequisites
 
@@ -37,7 +25,7 @@ pnpm tauri build --bundles app,dmg   # macOS app bundle + disk image
 
 ### Reminder notifications on macOS
 
-macOS delivers notifications under a *bundle identifier*, not under a process.
+macOS delivers notifications under a _bundle identifier_, not under a process.
 Under `pnpm tauri dev` the notification plugin impersonates `com.apple.Terminal`,
 so reminders arrive attributed to whichever terminal app started the dev server —
 if that app has notifications turned off in Settings > Notifications, nothing is
@@ -105,10 +93,3 @@ first user tests). On first run Windows SmartScreen shows a one-time
 "Windows protected your PC" warning — choose **More info → Run anyway**. This is
 expected for the test round; the updater artefacts are still cryptographically
 signed with the updater keypair, so in-app updates remain trustworthy.
-
-## Status
-
-Plans 1–7 are implemented: the shell, DB layer, the three beheerpagina's,
-Projecten & Taken, the reminders engine, notifications/tray/background task, the
-four takenviews with the shared filter, and finally the Kalender, the Dashboard,
-the first-run onboarding empty states and the auto-update + release pipeline.

@@ -48,9 +48,9 @@
   "plugins": {
     "updater": {
       "endpoints": [
-        "https://github.com/OWNER/REPO/releases/latest/download/latest.json"
+        "https://github.com/tsyg-ai/segment/releases/latest/download/latest.json"
       ],
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDhENkE5MTFDNTExNjEyRApSV1F0WVJIRkVhbldDTVJGNm1GMld3VnRLQUtWR24zYlk3WTZzODVRME42WlhWbFdtVGxmSERkbQo="
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDZCNUI1ODVFQzFEQTgwQTEKUldTaGdOckJYbGhiYXhZZGpnZkZrK1lzeEpCeUVuaXI2VGpaRVVnNEJoTDQ3emEvZk4wZFAzeFcK"
     }
   }
 }

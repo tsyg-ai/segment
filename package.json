@@ -1,7 +1,7 @@
 {
   "name": "takenbeheer",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "CLB Takenbeheer — single-user desktop task manager for CLB counsellors (Tauri v2 + React).",
   "scripts": {

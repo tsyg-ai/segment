@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties } from "react";
 import { nl } from "@/i18n";
 import { Button } from "@/components/core/Button";
 import { Card } from "@/components/display/Card";
@@ -7,19 +7,15 @@ import { SectionLabel } from "@/components/display/SectionLabel";
 const t = nl.onboarding.dashboard;
 
 /**
- * De "clean box"-openingstoestand van het dashboard (mockup
- * `_leeg-dashboard`): één kaart met een korte inleiding, de drie genummerde
- * stappen Sjablonen → Projecten → Taken (alleen stap 1 heeft een actie) en
- * daaronder twee optionele rijen — Kenmerken en Statussen.
+ * De "clean box"-openingstoestand van het dashboard: één kaart met een korte
+ * inleiding, vier genummerde uitleg-blokken — sjablonen/projecten/taken,
+ * kenmerken, herinneringen, statussen — en onderaan één actie die naar de
+ * sjablonen stuurt om het eerste sjabloon te maken.
  */
 export function DashboardOnboarding({
   onGotoTemplates,
-  onGotoAttributes,
-  onGotoStatuses,
 }: {
   onGotoTemplates: () => void;
-  onGotoAttributes: () => void;
-  onGotoStatuses: () => void;
 }) {
   return (
     <Card padding={0}>
@@ -28,27 +24,16 @@ export function DashboardOnboarding({
         <span style={headerBody}>{t.body}</span>
       </div>
 
-      <Step n={1} active title={t.step1Title} body={t.step1Body}>
-        <Button size="major" icon="plus" onClick={onGotoTemplates}>
-          {t.step1Action}
-        </Button>
-      </Step>
+      <Step n={1} title={t.step1Title} body={t.step1Body} />
       <Step n={2} title={t.step2Title} body={t.step2Body} />
       <Step n={3} title={t.step3Title} body={t.step3Body} />
+      <Step n={4} title={t.step4Title} body={t.step4Body} last />
 
-      <OptionalStep
-        title={t.optionalAttrTitle}
-        body={t.optionalAttrBody}
-        actionLabel={t.optionalAttrAction}
-        onAction={onGotoAttributes}
-      />
-      <OptionalStep
-        divided
-        title={t.optionalStatusTitle}
-        body={t.optionalStatusBody}
-        actionLabel={t.optionalStatusAction}
-        onAction={onGotoStatuses}
-      />
+      <div style={footerBlock}>
+        <Button size="major" icon="plus" onClick={onGotoTemplates}>
+          {t.cta}
+        </Button>
+      </div>
     </Card>
   );
 }
@@ -57,71 +42,22 @@ export function DashboardOnboarding({
 
 function Step({
   n,
-  active,
   title,
   body,
-  children,
+  last,
 }: {
   n: number;
-  active?: boolean;
   title: string;
   body: string;
-  children?: ReactNode;
+  last?: boolean;
 }) {
   return (
-    <div style={rowGrid}>
-      <span style={{ ...badge, ...(active ? badgeActive : badgeIdle) }}>{n}</span>
+    <div style={{ ...rowGrid, borderBottom: last ? "none" : undefined }}>
+      <span style={badge}>{n}</span>
       <span style={textCol}>
-        <span
-          style={{
-            ...stepTitle,
-            color: active ? "var(--text-primary)" : "var(--text-secondary)",
-          }}
-        >
-          {title}
-        </span>
+        <span style={{ ...stepTitle, color: "var(--text-secondary)" }}>{title}</span>
         <span style={stepBody}>{body}</span>
       </span>
-      <span>{children}</span>
-    </div>
-  );
-}
-
-function OptionalStep({
-  divided,
-  title,
-  body,
-  actionLabel,
-  onAction,
-}: {
-  divided?: boolean;
-  title: string;
-  body: string;
-  actionLabel: string;
-  onAction: () => void;
-}) {
-  return (
-    <div
-      style={{
-        ...rowGrid,
-        background: "var(--surface-panel)",
-        borderBottom: "none",
-        borderTop: divided
-          ? "var(--border-width) solid var(--border-subtle)"
-          : undefined,
-      }}
-    >
-      <span style={{ ...badge, ...badgeIdle, fontSize: "var(--text-lg)" }}>+</span>
-      <span style={textCol}>
-        <span style={optionalTitleRow}>
-          <span style={{ ...stepTitle, color: "var(--text-secondary)" }}>{title}</span>
-          <span style={optionalPill}>{nl.onboarding.optional}</span>
-        </span>
-        <span style={stepBody}>{body}</span>
-      </span>
-      <Button size="major" variant="secondary" onClick={onAction}>
-        {actionLabel}
-      </Button>
     </div>
   );
 }
@@ -143,7 +79,7 @@ const headerBody: CSSProperties = {
 };
 const rowGrid: CSSProperties = {
   display: "grid",
-  gridTemplateColumns: "28px minmax(0, 1fr) auto",
+  gridTemplateColumns: "28px minmax(0, 1fr)",
   gap: "var(--space-7)",
   alignItems: "center",
   padding: "14px 18px",
@@ -159,12 +95,6 @@ const badge: CSSProperties = {
   justifyContent: "center",
   fontSize: "var(--text-base)",
   fontWeight: "var(--weight-black)",
-};
-const badgeActive: CSSProperties = {
-  background: "var(--accent)",
-  color: "var(--text-on-dark)",
-};
-const badgeIdle: CSSProperties = {
   background: "var(--surface-sunken)",
   color: "var(--text-muted)",
 };
@@ -185,20 +115,7 @@ const stepBody: CSSProperties = {
   color: "var(--text-muted)",
   lineHeight: 1.45,
 };
-const optionalTitleRow: CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  gap: "var(--space-4)",
-  minWidth: 0,
-};
-const optionalPill: CSSProperties = {
-  flex: "none",
-  fontSize: "10.5px",
-  fontWeight: "var(--weight-bold)",
-  letterSpacing: "0.6px",
-  textTransform: "uppercase",
-  color: "var(--text-muted)",
-  background: "var(--surface-sunken)",
-  borderRadius: "var(--radius-round)",
-  padding: "3px 8px",
+const footerBlock: CSSProperties = {
+  padding: "14px 18px",
+  borderTop: "var(--border-width) solid var(--border-subtle)",
 };

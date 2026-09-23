@@ -214,28 +214,21 @@ export const nl = {
     },
     dashboard: {
       title: "Nog niets gepland",
-      lead: "Zo begin je",
-      body: "Start met een sjabloon van het type project dat je het vaakst doet. Start er een project uit en volg de taken op het dashboard.",
-      step1Title: "Maak een sjabloon",
+      lead: "Zo werkt het",
+      body: "Segment is gebouwd voor het opvolgen van projecten die een vaste structuur hebben. Je maakt een sjabloon per soort project, daaruit start je je project en de taken/herinneringen worden automatisch aangemaakt.",
+      step1Title: "Sjablonen, projecten en taken",
       step1Body:
-        "Werk één type project uit: de taken in volgorde, met hun herinneringen.",
-      step1Action: "Sjabloon maken",
-      step2Title: "Start een project",
+        "Een sjabloon is de blauwdruk van één type project: de vaste taken in volgorde. Je start er een project uit, de taken en herinneringen worden meteen aangemaakt.",
+      step2Title: "Herinneringen",
       step2Body:
-        "Het sjabloon wordt gekopieerd naar een project. Taken en herinneringen worden automatisch aangemaakt.",
-      step2Action: "Project starten",
-      step3Title: "Volg de taken op",
+        "Elke taak kan herinneringen krijgen: op een vast moment, of relatief aan de vorige taak of de deadline. Ze verschijnen als notificaties en op dit dashboard.",
+      step3Title: "Kenmerken",
       step3Body:
-        "Wat vandaag moet gebeuren of te laat is, komt bovenaan dit dashboard te staan.",
-      step3Action: "Naar taken",
-      optionalAttrTitle: "Kenmerken toevoegen",
-      optionalAttrBody:
-        "Eigen velden bij taken en projecten — datums, keuzelijsten, checkboxen. Je kan er later op filteren.",
-      optionalAttrAction: "Kenmerken bekijken",
-      optionalStatusTitle: "Statussen aanpassen",
-      optionalStatusBody:
-        "Te doen, bezig en klaar zijn reeds aangemaakt. Je kan eigen statussen toevoegen — die worden de kolommen op het bord.",
-      optionalStatusAction: "Statussen bekijken",
+        "Extra velden per taak, bijvoorbeeld: prioriteit, diagnose, school, etc. Algemene kenmerken kan je bij elke taak gebruiken; kenmerken per sjabloon enkel bij de taken van dat sjabloon.",
+      step4Title: "Statussen",
+      step4Body:
+        "Te doen, Bezig en Klaar zijn reeds toegevoegd. Je kan nog extra statussen toevoegen, die worden automatisch kolommen op het takenbord.",
+      cta: "Begin met je eerste sjabloon",
     },
   },
 

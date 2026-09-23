@@ -110,17 +110,16 @@ describe("Dashboard", () => {
   async function renderDashboard() {
     const { Dashboard } = await import("@/components/dashboard/Dashboard");
     const user = userEvent.setup();
+    const onGotoTemplates = vi.fn();
     wrap(
       <Dashboard
         onGotoTasks={vi.fn()}
         onGotoProjects={vi.fn()}
-        onGotoTemplates={vi.fn()}
-        onGotoAttributes={vi.fn()}
-        onGotoStatuses={vi.fn()}
+        onGotoTemplates={onGotoTemplates}
         onNewTask={vi.fn()}
       />,
     );
-    return { user };
+    return { user, onGotoTemplates };
   }
 
   it("rendert de banner + de drie blokken voor de fixture", async () => {
@@ -226,7 +225,7 @@ describe("Dashboard", () => {
     expect(invoke).toHaveBeenCalledWith("get_todo", { id: 20 });
   });
 
-  it("toont de driestapsonboarding bij een lege box", async () => {
+  it("toont de uitleg-onboarding bij een lege box en stuurt naar de sjablonen", async () => {
     invoke.mockImplementation((cmd: string) => {
       if (cmd === "dashboard_snapshot") return Promise.resolve(snapshot(false));
       if (cmd === "onboarding_state")
@@ -237,9 +236,13 @@ describe("Dashboard", () => {
         });
       return Promise.resolve(null);
     });
-    await renderDashboard();
+    const { user, onGotoTemplates } = await renderDashboard();
     expect(await screen.findByText(nl.onboarding.dashboard.title)).toBeInTheDocument();
     expect(screen.getByText(nl.onboarding.dashboard.step1Title)).toBeInTheDocument();
+    expect(screen.getByText(nl.onboarding.dashboard.step4Title)).toBeInTheDocument();
+
+    await user.click(screen.getByText(nl.onboarding.dashboard.cta));
+    expect(onGotoTemplates).toHaveBeenCalledOnce();
   });
 });
 

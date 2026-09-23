@@ -79,8 +79,6 @@ export function AppShell() {
             onGotoTasks={() => goto("taken")}
             onGotoProjects={() => goto("projecten")}
             onGotoTemplates={() => goto("sjablonen")}
-            onGotoAttributes={() => goto("kenmerken")}
-            onGotoStatuses={() => goto("statussen")}
             onNewTask={() => {
               requestNewTask(true);
               setSubView("list");

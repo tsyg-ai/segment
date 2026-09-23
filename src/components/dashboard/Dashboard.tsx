@@ -30,15 +30,11 @@ export function Dashboard({
   onGotoTasks,
   onGotoProjects,
   onGotoTemplates,
-  onGotoAttributes,
-  onGotoStatuses,
   onNewTask,
 }: {
   onGotoTasks: () => void;
   onGotoProjects: () => void;
   onGotoTemplates: () => void;
-  onGotoAttributes: () => void;
-  onGotoStatuses: () => void;
   onNewTask: () => void;
 }) {
   const { data, isLoading } = useDashboard();
@@ -102,11 +98,7 @@ export function Dashboard({
           }}
         >
           {showOnboarding ? (
-            <DashboardOnboarding
-              onGotoTemplates={onGotoTemplates}
-              onGotoAttributes={onGotoAttributes}
-              onGotoStatuses={onGotoStatuses}
-            />
+            <DashboardOnboarding onGotoTemplates={onGotoTemplates} />
           ) : isLoading || !data ? (
             <p
               style={{

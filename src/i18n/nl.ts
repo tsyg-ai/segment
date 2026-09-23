@@ -452,7 +452,7 @@ export const nl = {
     noDeadline:
       "Een sjabloontaak heeft geen eigen deadline of status. Die komen bij het starten van een project.",
     attributesLabel: "Kenmerken",
-    attributesHint: "Enkel bij taken uit projecten van dit sjabloon",
+    attributesHint: "Deze zullen enkel zichtbaar zijn bij taken van dit sjabloon.",
     noOwnAttributes: "Nog geen eigen kenmerken.",
     addAttribute: "+ Kenmerk toevoegen",
     addAttributeValue: "+ Kenmerk",

@@ -3,6 +3,8 @@
 /plans
 /designs
 /icons
+.claude
+.kilo
 
 # dependencies
 node_modules

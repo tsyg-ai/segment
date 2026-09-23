@@ -723,7 +723,7 @@ function TemplateEditor({
         )}
 
         <AddRowButton
-          label={`${nl.templates.addTask} — ${nl.templates.addTaskHint}`}
+          label={`${nl.templates.addTask}`}
           onClick={() => setAddingTask(true)}
         />
       </BeheerColumns>
